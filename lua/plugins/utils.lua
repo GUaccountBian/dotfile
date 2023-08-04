@@ -81,7 +81,7 @@ return {
         config = true,
     },
     {
-        "nvim-neo-tree/neo-tree.nvim",
+        "nvim-neo-tree/neo-tree.nvim",      -- browse tree like structures (file system ...)
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
@@ -89,11 +89,12 @@ return {
         },
         config = function()
             require("neo-tree").setup()
+            -- open the current folder tree
             vim.keymap.set({"n", "v"},"<leader>e",[[<cmd>Neotree toggle<CR>]])
         end
     },
     {
-        "folke/which-key.nvim",
+        "folke/which-key.nvim",             -- displays a popup with possible key bindings of the command you started typing
         config = true,
     },
     {
@@ -103,5 +104,25 @@ return {
     {
         "echasnovski/mini.comment",
         config = true,
+    },
+    {
+        "s1n7ax/nvim-window-picker",
+        config = function()
+            require("window-picker").setup({
+                filter_rules = {
+                    include_current_win = true,
+                    bo = {
+                        filetype = { "fidget", "neo-tree" }
+                    }
+                }
+            })
+            vim.keymap.set("n",
+                "<c-w>p",
+                function()
+                    local window_number = require('window-picker').pick_window()
+                    if window_number then vim.api.nvim_set_current_win(window_number) end
+                end
+            )
+        end
     },
 }
