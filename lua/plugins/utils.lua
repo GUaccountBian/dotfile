@@ -20,6 +20,7 @@ return {
     },
     {
         "windwp/nvim-autopairs",
+        event = "VeryLazy",
         opts = {
             -- check bracket in same line if true
             -- if **next character** is a close pair and it doesn't have an open pair in same line to match,
@@ -38,7 +39,7 @@ return {
         config = function()
             require('flash').setup()
             vim.keymap.set( {"n", "x", "o"}, "s",
-                function() 
+                function()
                     require('flash').jump({
                         search = {
                             mode = function(str)
@@ -71,6 +72,7 @@ return {
     },
     {
         "kamykn/spelunker.vim",     -- improves Vim's spell checking function, provide a smarter way to correct
+        event = "VeryLazy",
         config = function()
             -- Spellcheck displayed words in buffer
             vim.g.spelunker_check_type = 2
@@ -78,6 +80,7 @@ return {
     },
     {
         "ellisonleao/glow.nvim",    -- A markdown preview directly in nvim
+        event = "VeryLazy",
         config = true,
     },
     {
@@ -95,14 +98,17 @@ return {
     },
     {
         "folke/which-key.nvim",             -- displays a popup with possible key bindings of the command you started typing
+        event = "VeryLazy",
         config = true,
     },
     {
         'echasnovski/mini.ai',
+        event = "VeryLazy",
         config = true,
     },
     {
         "echasnovski/mini.comment",
+        event = "VeryLazy",
         config = true,
     },
     {
